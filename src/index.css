@@ -4,53 +4,59 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 210 40% 98%;
+    --background: 248 100% 99%;
+    --foreground: 240 25% 10%;
 
-    --card: 220 18% 9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 25% 10%;
 
-    --popover: 220 18% 9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 25% 10%;
 
-    --primary: 199 100% 55%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 248 85% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 14%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 248 40% 95%;
+    --secondary-foreground: 240 25% 10%;
 
-    --muted: 220 15% 14%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 240 15% 94%;
+    --muted-foreground: 240 10% 50%;
 
-    --accent: 28 100% 58%;
-    --accent-foreground: 220 20% 6%;
+    --accent: 22 100% 57%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 16%;
-    --input: 220 15% 16%;
-    --ring: 199 100% 55%;
+    --border: 240 15% 90%;
+    --input: 240 15% 90%;
+    --ring: 248 85% 60%;
 
     --radius: 1rem;
 
-    /* Custom brand colors */
-    --neon-blue: #00c8f8;
-    --neon-orange: #ff7a20;
-    --neon-green: #39e88e;
-    --neon-purple: #a855f7;
-    --deep-bg: #080d14;
-    --card-bg: #0e1520;
-    --card-border: #1a2640;
+    /* Brand */
+    --brand-violet: #5b4fff;
+    --brand-orange: #ff6b2b;
+    --brand-pink: #ff3d9a;
+    --brand-green: #00c97d;
+    --brand-yellow: #ffd23f;
+    --brand-blue: #3b82f6;
+    --brand-teal: #14b8a6;
 
-    --sidebar-background: 220 18% 9%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 199 100% 55%;
-    --sidebar-primary-foreground: 220 20% 6%;
-    --sidebar-accent: 220 15% 14%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 220 15% 16%;
-    --sidebar-ring: 199 100% 55%;
+    --bg-main: #f5f4ff;
+    --bg-card: #ffffff;
+    --border-light: #e8e5ff;
+    --text-main: #0f0e2a;
+    --text-muted: #6b6b8a;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 25% 10%;
+    --sidebar-primary: 248 85% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 248 40% 95%;
+    --sidebar-accent-foreground: 240 25% 10%;
+    --sidebar-border: 240 15% 90%;
+    --sidebar-ring: 248 85% 60%;
   }
 }
 
@@ -60,9 +66,9 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--bg-main);
+    color: var(--text-main);
     font-family: "Golos Text", sans-serif;
-    background-color: var(--deep-bg);
   }
 
   h1,
@@ -76,156 +82,86 @@
   .font-golos {
     font-family: "Golos Text", sans-serif;
   }
-
   .font-oswald {
     font-family: "Oswald", sans-serif;
   }
 
-  .neon-text-blue {
-    color: var(--neon-blue);
-    text-shadow:
-      0 0 20px rgba(0, 200, 248, 0.6),
-      0 0 40px rgba(0, 200, 248, 0.3);
+  .card-white {
+    background: #ffffff;
+    border: 1.5px solid var(--border-light);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 24px rgba(91, 79, 255, 0.07);
   }
 
-  .neon-text-orange {
-    color: var(--neon-orange);
-    text-shadow:
-      0 0 20px rgba(255, 122, 32, 0.6),
-      0 0 40px rgba(255, 122, 32, 0.3);
+  .grid-light {
+    background-image:
+      linear-gradient(rgba(91, 79, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91, 79, 255, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
   }
 
-  .neon-border-blue {
-    border-color: var(--neon-blue);
-    box-shadow:
-      0 0 12px rgba(0, 200, 248, 0.25),
-      inset 0 0 12px rgba(0, 200, 248, 0.05);
+  .hover-card-lift {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
-
-  .neon-border-orange {
-    border-color: var(--neon-orange);
-    box-shadow:
-      0 0 12px rgba(255, 122, 32, 0.25),
-      inset 0 0 12px rgba(255, 122, 32, 0.05);
-  }
-
-  .card-glass {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    backdrop-filter: blur(10px);
-  }
-
-  .grid-dots {
-    background-image: radial-gradient(
-      circle,
-      rgba(0, 200, 248, 0.12) 1px,
-      transparent 1px
-    );
-    background-size: 32px 32px;
+  .hover-card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(91, 79, 255, 0.14);
   }
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-
   .animate-pulse-slow {
     animation: pulse-slow 3s ease-in-out infinite;
   }
-
   .animate-slide-up {
-    animation: slide-up 0.6s ease-out forwards;
+    animation: slide-up 0.5s ease-out forwards;
   }
-
   .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-
-  .hover-card-lift {
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-
-  .hover-card-lift:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0, 200, 248, 0.15);
+    animation: glow-v 2.5s ease-in-out infinite alternate;
   }
 }
 
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-18px);
   }
 }
-
 @keyframes pulse-slow {
   0%,
   100% {
-    opacity: 0.6;
+    opacity: 0.4;
   }
   50% {
     opacity: 1;
   }
 }
-
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(32px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-@keyframes glow {
+@keyframes glow-v {
   from {
-    box-shadow: 0 0 10px rgba(0, 200, 248, 0.3);
+    box-shadow: 0 0 10px rgba(91, 79, 255, 0.25);
   }
   to {
     box-shadow:
-      0 0 30px rgba(0, 200, 248, 0.7),
-      0 0 60px rgba(0, 200, 248, 0.3);
+      0 0 28px rgba(91, 79, 255, 0.6),
+      0 0 56px rgba(91, 79, 255, 0.18);
   }
 }
-
-@keyframes accordion-down {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--radix-accordion-content-height);
-  }
-}
-
-@keyframes accordion-up {
-  from {
-    height: var(--radix-accordion-content-height);
-  }
-  to {
-    height: 0;
-  }
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--deep-bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--neon-blue);
-  border-radius: 3px;
-  opacity: 0.5;
-}
-
-/* Orbit animation for hero */
 @keyframes orbit {
   from {
     transform: rotate(0deg) translateX(120px) rotate(0deg);
@@ -234,13 +170,28 @@
     transform: rotate(360deg) translateX(120px) rotate(-360deg);
   }
 }
-
 @keyframes orbit-reverse {
   from {
     transform: rotate(0deg) translateX(80px) rotate(0deg);
   }
   to {
     transform: rotate(-360deg) translateX(80px) rotate(360deg);
+  }
+}
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
   }
 }
 
@@ -254,38 +205,38 @@
   animation: orbit 18s linear infinite;
 }
 
-@keyframes counter-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .stagger-1 {
-  animation: slide-up 0.6s ease-out 0.1s both;
+  animation: slide-up 0.5s ease-out 0.05s both;
 }
 .stagger-2 {
-  animation: slide-up 0.6s ease-out 0.2s both;
+  animation: slide-up 0.5s ease-out 0.12s both;
 }
 .stagger-3 {
-  animation: slide-up 0.6s ease-out 0.3s both;
+  animation: slide-up 0.5s ease-out 0.2s both;
 }
 .stagger-4 {
-  animation: slide-up 0.6s ease-out 0.4s both;
+  animation: slide-up 0.5s ease-out 0.28s both;
 }
 .stagger-5 {
-  animation: slide-up 0.6s ease-out 0.5s both;
+  animation: slide-up 0.5s ease-out 0.36s both;
 }
 .stagger-6 {
-  animation: slide-up 0.6s ease-out 0.6s both;
+  animation: slide-up 0.5s ease-out 0.44s both;
 }
 .stagger-7 {
-  animation: slide-up 0.6s ease-out 0.7s both;
+  animation: slide-up 0.5s ease-out 0.52s both;
 }
 .stagger-8 {
-  animation: slide-up 0.6s ease-out 0.8s both;
+  animation: slide-up 0.5s ease-out 0.6s both;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #eeecff;
+}
+::-webkit-scrollbar-thumb {
+  background: #b3adff;
+  border-radius: 3px;
 }
